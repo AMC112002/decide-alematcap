@@ -31,9 +31,10 @@ class CensusCreate(generics.ListCreateAPIView):
 
     def list(self, request, *args, **kwargs):
         voting_id = request.GET.get('voting_id')
+        adscription =request.GET.get('adscription')
         voters = Census.objects.filter(voting_id=voting_id).values_list('voter_id', flat=True)
-        adscription = Census.objects.filter(adscription=adscription).values_list('adscription', flat = True)
-        return Response({'voters': voters})
+        voters2 = Census.objects.filter(adscription=adscription).values_list('adscription', flat = True)
+        return Response({'voters': voters, 'voters2':voters2})
 
 
 class CensusDetail(generics.RetrieveDestroyAPIView):
