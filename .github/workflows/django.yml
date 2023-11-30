@@ -46,6 +46,6 @@ jobs:
     - name: Run tests
       run: |
         cd decide
-        run --branch --source=. ./manage.py test voting --keepdb
+        ./manage.py test voting --keepdb
         
 
